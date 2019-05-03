@@ -1,3 +1,4 @@
 hello everyone
 
-you can see python project here
+I'm learning python by myself, and here you can read my notes.
+
