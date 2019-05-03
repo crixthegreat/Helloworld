@@ -32,7 +32,7 @@
 2. static method
 3. class method
 
-refer to `day9-1.py`
+refer to [day9-1.py](./day9/day9-1.py)
 
 1. instance method
 
