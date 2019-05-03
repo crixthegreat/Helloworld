@@ -1,7 +1,3 @@
-learning python by 100 days from
-
-https://github.com/crixthegreat/Python-100-Days ( fork from https://github.com/jackfrued/Python-100-Days)
-
 [days 6]
 
 - *args as function parameter (list)
@@ -10,11 +6,11 @@ https://github.com/crixthegreat/Python-100-Days ( fork from https://github.com/j
 [days 7]
 
 - use 'yield' to make a generator
-- refer to <Python yield Ê¹ÓÃÇ³Îö> by ÁÎ Ñ©·å https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
+- refer to <Python yield ʹ��ǳ��> by �� ѩ�� https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
 
 - Tuples is used to store values that are not intented to change
 - use list() to change a tuple into a list
-- a tuple with only one item is constructed by following a value with a comma 
+- a tuple with one item is constructed by following a value with a comma 
 
 >>> singleton = 'hello',    # <-- note trailing comma
 >>> len(singleton)
@@ -25,25 +21,10 @@ https://github.com/crixthegreat/Python-100-Days ( fork from https://github.com/j
 - use set() to make a set(collection)
 - the operator of set are '&', '|', '-', '^', '<=', ... and so on
 
-    set1 = {1, 2, 3, 3, 3, 2}
-    set2 = set(range(1, 10))
-    set1.add(4)
-    set1.add(5)
-    set2.update([11, 12])
-    set2.discard(5)
-    # remove的元素如果不存在会引发KeyError
-    if 4 in set2:
-        set2.remove(4)
-    print(set2)
-    # 遍历集合容器
-    for elem in set2:
-        print(elem ** 2, end=' ')
-    # 将元组转换成集合
-    set3 = set((1, 2, 3, 3, 2, 1))
 
 [day 9]
 
-A class has three types of method
+(1) A class has three types of method
 
 1. instance method
 2. static method
@@ -67,4 +48,11 @@ refer to [day9-1.py]
 	the class method can return a class itself
 	which is useful to creat a specific instance(object)
 	use @classmethod as the decorator
+
+(2) super().__init__(arg1, agr2, ...)
+
+- use super() to return the parent class
+- super can be used to refer to parent classes without naming them explicitly, thus making the code more maintainable
+- refer to artical: <Python��s super() considered super!> by Raymond Hettinger @ https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+
 
