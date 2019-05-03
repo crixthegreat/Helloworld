@@ -25,6 +25,21 @@ https://github.com/crixthegreat/Python-100-Days ( fork from https://github.com/j
 - use set() to make a set(collection)
 - the operator of set are '&', '|', '-', '^', '<=', ... and so on
 
+    set1 = {1, 2, 3, 3, 3, 2}
+    set2 = set(range(1, 10))
+    set1.add(4)
+    set1.add(5)
+    set2.update([11, 12])
+    set2.discard(5)
+    # remove的元素如果不存在会引发KeyError
+    if 4 in set2:
+        set2.remove(4)
+    print(set2)
+    # 遍历集合容器
+    for elem in set2:
+        print(elem ** 2, end=' ')
+    # 将元组转换成集合
+    set3 = set((1, 2, 3, 3, 2, 1))
 
 [day 9]
 
