@@ -24,9 +24,9 @@ class LoggingDict(dict):
         logging.info('Settingto %r' % (key, value))
         super().__setitem__(key, value)
 ```
-This class has all the same capabilities as its parent, dict, but it extends the __setitem__ method to make log entries whenever a key is updated. After making a log entry, the method uses super() to delegate the work for actually updating the dictionary with the key/value pair.
+This class has all the same capabilities as its parent, dict, but it extends the \_\_setitem\_\_ method to make log entries whenever a key is updated. After making a log entry, the method uses super() to delegate the work for actually updating the dictionary with the key/value pair.
 
-Before super() was introduced, we would have hardwired the call with dict.__setitem__(self, key, value). However, super() is better because it is a computed indirect reference.
+Before super() was introduced, we would have hardwired the call with dict.\_\_setitem\_\_(self, key, value). However, super() is better because it is a computed indirect reference.
 
 One benefit of indirection is that we don’t have to specify the delegate class by name. If you edit the source code to switch the base class to some other mapping, the super() reference will automatically follow. You have a single source of truth:
 ```
@@ -37,14 +37,14 @@ class LoggingDict(SomeOtherMapping):            # new base class
 ```
 In addition to isolating changes, there is another major benefit to computed indirection, one that may not be familiar to people coming from static languages. Since the indirection is computed at runtime, we have the freedom to influence the calculation so that the indirection will point to some other class.
 
-The calculation depends on both the class where super is called and on the instance’s tree of ancestors. The first component, the class where super is called, is determined by the source code for that class. In our example, super() is called in the LoggingDict.__setitem__ method. That component is fixed. The second and more interesting component is variable (we can create new subclasses with a rich tree of ancestors).
+The calculation depends on both the class where super is called and on the instance’s tree of ancestors. The first component, the class where super is called, is determined by the source code for that class. In our example, super() is called in the LoggingDict.\_\_setitem\_\_ method. That component is fixed. The second and more interesting component is variable (we can create new subclasses with a rich tree of ancestors).
 
 Let’s use this to our advantage to construct a logging ordered dictionary without modifying our existing classes:
 ```
 class LoggingOD(LoggingDict, collections.OrderedDict):
     pass
 ```
-The ancestor tree for our new class is: LoggingOD, LoggingDict, OrderedDict, dict, object. For our purposes, the important result is that OrderedDict was inserted after LoggingDict and before dict! This means that the super() call in LoggingDict.__setitem__ now dispatches the key/value update to OrderedDict instead of dict.
+The ancestor tree for our new class is: LoggingOD, LoggingDict, OrderedDict, dict, object. For our purposes, the important result is that OrderedDict was inserted after LoggingDict and before dict! This means that the super() call in LoggingDict.\_\_setitem\_\_ now dispatches the key/value update to OrderedDict instead of dict.
 
 Think about that for a moment. We did not alter the source code for LoggingDict. Instead we built a subclass whose only logic is to compose two existing classes and control their search order.
 
@@ -52,7 +52,7 @@ ________________________________________________________________________________
 
 Search Order
 --
-What I’ve been calling the search order or ancestor tree is officially known as the Method Resolution Order or MRO. It’s easy to view the MRO by printing the __mro__ attribute:
+What I’ve been calling the search order or ancestor tree is officially known as the Method Resolution Order or MRO. It’s easy to view the MRO by printing the \_\_mro\_\_ attribute:
 ```
 >>> pprint(LoggingOD.__mro__)
 (<class '__main__.LoggingOD'>,
@@ -66,12 +66,12 @@ If our goal is to create a subclass with an MRO to our liking, we need to know h
 The MRO shown above is the one order that follows from those constraints:
 
 * LoggingOD precedes its parents, LoggingDict and OrderedDict
-* LoggingDict precedes OrderedDict because LoggingOD.__bases__ is (LoggingDict, OrderedDict)
+* LoggingDict precedes OrderedDict because LoggingOD.\_\_bases\_\_ is (LoggingDict, OrderedDict)
 * LoggingDict precedes its parent which is dict
 * OrderedDict precedes its parent which is dict
 * dict precedes its parent which is object
 
-The process of solving those constraints is known as linearization. There are a number of good papers on the subject, but to create subclasses with an MRO to our liking, we only need to know the two constraints: children precede their parents and the order of appearance in __bases__ is respected.
+The process of solving those constraints is known as linearization. There are a number of good papers on the subject, but to create subclasses with an MRO to our liking, we only need to know the two constraints: children precede their parents and the order of appearance in \_\_bases\_\_ is respected.
 
 __________________________________________________________________________________________________________________
 
@@ -85,11 +85,11 @@ and every occurrence of the method needs to use super()
 
 1) Let’s first look at strategies for getting the caller’s arguments to match the signature of the called method. This is a little more challenging than traditional method calls where the callee is known in advance. With super(), the callee is not known at the time a class is written (because a subclass written later may introduce new classes into the MRO).
 
-One approach is to stick with a fixed signature using positional arguments. This works well with methods like __setitem__ which have a fixed signature of two arguments, a key and a value. This technique is shown in the LoggingDict example where __setitem__ has the same signature in both LoggingDict and dict.
+One approach is to stick with a fixed signature using positional arguments. This works well with methods like \_\_setitem\_\_ which have a fixed signature of two arguments, a key and a value. This technique is shown in the LoggingDict example where \_\_setitem\_\_ has the same signature in both LoggingDict and dict.
 
-A more flexible approach is to have every method in the ancestor tree cooperatively designed to accept keyword arguments and a keyword-arguments dictionary, to remove any arguments that it needs, and to forward the remaining arguments using **kwds, eventually leaving the dictionary empty for the final call in the chain.
+A more flexible approach is to have every method in the ancestor tree cooperatively designed to accept keyword arguments and a keyword-arguments dictionary, to remove any arguments that it needs, and to forward the remaining arguments using \*\*kwds, eventually leaving the dictionary empty for the final call in the chain.
 
-Each level strips-off the keyword arguments that it needs so that the final empty dict can be sent to a method that expects no arguments at all (for example, object.__init__ expects zero arguments):
+Each level strips-off the keyword arguments that it needs so that the final empty dict can be sent to a method that expects no arguments at all (for example, object.\_\_init\_\_ expects zero arguments):
 ```
 class Shape:
     def __init__(self, shapename, **kwds):
@@ -105,7 +105,7 @@ cs = ColoredShape(color='red', shapename='circle')
 ```
 2) Having looked at strategies for getting the caller/callee argument patterns to match, let’s now look at how to make sure the target method exists.
 
-The above example shows the simplest case. We know that object has an __init__ method and that object is always the last class in the MRO chain, so any sequence of calls to super().__init__ is guaranteed to end with a call to object.__init__ method. In other words, we’re guaranteed that the target of the super() call is guaranteed to exist and won’t fail with an AttributeError.
+The above example shows the simplest case. We know that object has an \_\_init\_\_ method and that object is always the last class in the MRO chain, so any sequence of calls to super().\_\_init\_\_ is guaranteed to end with a call to object.\_\_init\_\_ method. In other words, we’re guaranteed that the target of the super() call is guaranteed to exist and won’t fail with an AttributeError.
 
 For cases where object doesn’t have the method of interest (a draw() method for example), we need to write a root class that is guaranteed to be called before object. The responsibility of the root class is simply to eat the method call without making a forwarding call using super().
 
@@ -147,7 +147,7 @@ How to Incorporate a Non-cooperative Class
 --
 Occasionally, a subclass may want to use cooperative multiple inheritance techniques with a third-party class that wasn’t designed for it (perhaps its method of interest doesn’t use super() or perhaps the class doesn’t inherit from the root class). This situation is easily remedied by creating an adapter class that plays by the rules.
 
-For example, the following Moveable class does not make super() calls, and it has an __init__() signature that is incompatible with object.__init__, and it does not inherit from Root:
+For example, the following Moveable class does not make super() calls, and it has an \_\_init\_\_() signature that is incompatible with object.\_\_init\_\_, and it does not inherit from Root:
 ```
 class Moveable:
     def __init__(self, x, y):
@@ -195,7 +195,7 @@ ________________________________________________________________________________
 
 Notes and References
 --
-* When subclassing a builtin such as dict(), it is often necessary to override or extend multiple methods at a time. In the above examples, the __setitem__ extension isn’t used by other methods such as dict.update, so it may be necessary to extend those also. This requirement isn’t unique to super(); rather, it arises whenever builtins are subclassed.
+* When subclassing a builtin such as dict(), it is often necessary to override or extend multiple methods at a time. In the above examples, the \_\_setitem\_\_ extension isn’t used by other methods such as dict.update, so it may be necessary to extend those also. This requirement isn’t unique to super(); rather, it arises whenever builtins are subclassed.
 
 * If a class relies on one parent class preceding another (for example, LoggingOD depends on LoggingDict coming before OrderedDict which comes before dict), it is easy to add assertions to validate and document the intended method resolution order:
 ```
