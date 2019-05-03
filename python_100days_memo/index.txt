@@ -6,7 +6,7 @@
 [days 7]
 
 - use 'yield' to make a generator
-- refer to <Python yield ʹ��ǳ��> by �� ѩ�� https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
+- refer to <Python yield Ê¹ÓÃÇ³Îö> by ÁÎ Ñ©·å https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
 
 - Tuples is used to store values that are not intented to change
 - use list() to change a tuple into a list
