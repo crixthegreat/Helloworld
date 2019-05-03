@@ -6,7 +6,7 @@
 [days 7]
 
 - use 'yield' to make a generator
-- refer to <Python yield Ê¹ÓÃÇ³Îö> by ÁÎ Ñ©·å https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
+- refer to <Python yield ʹ��ǳ��> by �� ѩ�� https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
 
 - Tuples is used to store values that are not intented to change
 - use list() to change a tuple into a list
@@ -21,4 +21,31 @@
 - use set() to make a set(collection)
 - the operator of set are '&', '|', '-', '^', '<=', ... and so on
 
+
+[day 9]
+
+A class has three types of method
+
+1. instance method
+2. static method
+3. class method
+
+refer to [day9-1.py]
+
+
+1. instance method
+
+	the method can be used by the instance(object)
+	use 'self' as the first argument 
+
+2. static method
+
+	the method can be used by the class and the instance
+	use @staticmethod as the decorator
+
+3. class method
+
+	the class method can return a class itself
+	which is useful to creat a specific instance(object)
+	use @classmethod as the decorator
 
