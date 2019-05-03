@@ -1,0 +1,4 @@
+[days 6]
+
+- *args as function parameter (list)
+- use the '_' for the meanlingless varible name 
