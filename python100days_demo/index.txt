@@ -2,3 +2,23 @@
 
 - *args as function parameter (list)
 - use the '_' for the meanlingless varible name 
+
+[days 7]
+
+- use 'yield' to make a generator
+- refer to <Python yield Ê¹ÓÃÇ³Îö> by ÁÎ Ñ©·å https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
+
+- Tuples is used to store values that are not intented to change
+- use list() to change a tuple into a list
+- a tuple with one item is constructed by following a value with a comma 
+
+>>> singleton = 'hello',    # <-- note trailing comma
+>>> len(singleton)
+1
+>>> singleton
+('hello',)
+
+- use set() to make a set(collection)
+- the operator of set are '&', '|', '-', '^', '<=', ... and so on
+
+
