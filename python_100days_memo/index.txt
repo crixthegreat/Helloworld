@@ -1,3 +1,7 @@
+learning python by 100 days from
+
+https://github.com/crixthegreat/Python-100-Days ( fork from https://github.com/jackfrued/Python-100-Days)
+
 [days 6]
 
 - *args as function parameter (list)
@@ -6,11 +10,11 @@
 [days 7]
 
 - use 'yield' to make a generator
-- refer to <Python yield ʹ��ǳ��> by �� ѩ�� https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
+- refer to <Python yield Ê¹ÓÃÇ³Îö> by ÁÎ Ñ©·å https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
 
 - Tuples is used to store values that are not intented to change
 - use list() to change a tuple into a list
-- a tuple with one item is constructed by following a value with a comma 
+- a tuple with only one item is constructed by following a value with a comma 
 
 >>> singleton = 'hello',    # <-- note trailing comma
 >>> len(singleton)
