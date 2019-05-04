@@ -56,6 +56,13 @@ refer to [day9-1.py](./day9/day9-1.py)
 - super can be used to refer to parent classes without naming them explicitly, thus making the code more maintainable
 - refer to artical: [Python's super() considered super!](https://rhettinger.wordpress.com/2011/05/26/super-considered-super/) by __Raymond Hettinger__
 
+
 ## day10
 
 a brief introduction of tkinker and pygame
+
+
+## day11
+
+a brief introduction of exception
+refer to [总结：Python中的异常处理](./day11/refer/总结：Python中的异常处理.md) by __betacat__
