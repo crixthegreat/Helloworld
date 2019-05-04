@@ -55,3 +55,7 @@ refer to [day9-1.py](./day9/day9-1.py)
 - use super() to return the parent class
 - super can be used to refer to parent classes without naming them explicitly, thus making the code more maintainable
 - refer to artical: [Python's super() considered super!](https://rhettinger.wordpress.com/2011/05/26/super-considered-super/) by __Raymond Hettinger__
+
+## day10
+
+a brief introduction of tkinker and pygame
