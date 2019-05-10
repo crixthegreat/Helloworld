@@ -2,8 +2,8 @@
 
 ## days 6 
 
-- *args as function parameter (list)
-- use the '_' for the meanlingless varible name 
+- `*args` as function parameter (list)
+- use the `_` for the meanlingless varible name 
 
 ## days 7
 
@@ -11,7 +11,7 @@
 - refer to [Python yield 使用浅析](https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/)  by __廖 雪峰__ 
 
 - Tuples is used to store values that are not intented to change
-- use list() to change a tuple into a list
+- use `list()` to change a tuple into a list
 - a tuple with one item is constructed by following a value with a comma 
 
 ```
@@ -22,7 +22,7 @@
 ('hello',)
 ```
 
-- use set() to make a set(collection)
+- use `set()` to make a set(collection)
 - the operator of set are '&', '|', '-', '^', '<=', ... and so on
 
 
