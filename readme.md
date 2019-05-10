@@ -74,6 +74,12 @@ refer to [总结：Python中的异常处理](./day11/refer/总结：Python中的
 a brief introduction of `strings` and Regular Expression
 refer to [正则表达式30分钟入门教程(by deerchao)](https://deerchao.net/tutorials/regex/regex.htm)
 
-- useful strings methods:
-  bool type : `str.isalpha()` (alpha-beta)  `str.isdecimal()`(numbers)  `str.isalnum`(alpha-beta and numbers)
-  fuctions: `'-'.join(list)`  `sentence.split(',')` `pyperclip.copy('老虎不发猫你当我病危呀')`  `print(pyperclip.paste())`
+- useful strings methods:<br>
+bool type : `str.isalpha()` (alpha-beta)  `str.isdecimal()`(numbers)  `str.isalnum`(alpha-beta and numbers)<br>
+fuctions: `'-'.join(list)`  `sentence.split(',')` `pyperclip.copy('老虎不发猫你当我病危呀')`  `print(pyperclip.paste())`
+- to trim a str:
+```
+t = t[:len(t) -1]  
+# which equals to
+t=t[::-1][1:][::-1]
+```
