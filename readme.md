@@ -1,3 +1,5 @@
+# the note index
+
 ## days 6 
 
 - *args as function parameter (list)
