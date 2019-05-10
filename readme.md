@@ -68,3 +68,8 @@ a brief introduction of tkinker and pygame
 
 a brief introduction of exception
 refer to [总结：Python中的异常处理](./day11/refer/总结：Python中的异常处理.md) by __betacat__
+
+## day12
+
+a brief introduction of Regular Expression
+refer to [正则表达式30分钟入门教程(by deerchao)](https://deerchao.net/tutorials/regex/regex.htm)
