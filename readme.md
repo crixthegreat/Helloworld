@@ -83,3 +83,11 @@ t = t[:len(t) -1]
 # which equals to
 t=t[::-1][1:][::-1]
 ```
+
+- to use regulaer expression in python , 
+```
+import re
+re.match()
+re.sub
+re.compile(r'(?<=\D)(1[38]\d{9}|14[57]\d{8}|15[0-35-9]\d{8}|17[678]\d{8})(?=\D)')
+```
