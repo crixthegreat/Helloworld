@@ -97,3 +97,9 @@ Process and threads 进程和线程
 
 - refer to [知乎：线程和进程的区别是什么？](https://www.zhihu.com/question/25532384)
 - refer to [examples](https://github.com/crixthegreat/Python-100-Days/tree/master/Day01-15/Day13/code)
+
+## day14 A/B
+
+- listen and send message via sockets
+- use threads to accept mutil-user events simultaneously
+- send emails and text-messages
