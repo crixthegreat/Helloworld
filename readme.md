@@ -103,3 +103,6 @@ Process and threads 进程和线程
 - listen and send message via sockets
 - use threads to accept mutil-user events simultaneously
 - send emails and text-messages
+
+## day15
+- PIL module to deal with images
