@@ -112,3 +112,15 @@ advance programming of python
 
 - generator and iterator
 - multi-thread program
+
+## day21
+web front-end
+
+## day31
+a brief introduction of Linux
+
+## day36
+NoSQL & MySQL
+
+## day41
+a introduction of Danjo 
