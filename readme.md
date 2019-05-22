@@ -124,3 +124,16 @@ NoSQL & MySQL
 
 ## day41
 a introduction of Danjo 
+
+## day56
+a introduction of flask (no content yet)
+
+## day61
+a introduction of Tornado
+
+## day66
+a introduction of web crawler(spider) technical and Scrapy
+
+## day76
+machine-learning
+
