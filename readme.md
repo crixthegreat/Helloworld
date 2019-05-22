@@ -106,3 +106,9 @@ Process and threads 进程和线程
 
 ## day15
 - PIL module to deal with images
+
+## day16
+advance programming of python
+
+- generator and iterator
+- multi-thread program
